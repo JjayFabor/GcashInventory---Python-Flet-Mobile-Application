@@ -1,9 +1,11 @@
 from flet import *
+from flet import Container, Stack, Row, Text, ElevatedButton
 
-def switch_page(page: Page):
-    pass
 
 def main(page: Page):
+    page.theme_mode = ThemeMode.LIGHT
+    page.title = "Gcash Inventory"
+    BG = '#041955'
 
     def go_cashIn(e):
         page.route = '/cashIn'
@@ -11,22 +13,29 @@ def main(page: Page):
         # Create a new container with the content for the 'Cash In' page
         new_container = Container(
             width='90vw',
-            height=750,
-            bgcolor=FWG,  # Use FWG instead of FG
+            bgcolor=BG,
             border_radius=35,
             alignment=alignment.center,
             content=Container(
                 Stack(
-                    width='90vw',
                     height=750,
                     controls=[
-
                         Text("Cash In", size=40, color='white', weight=FontWeight.BOLD),
+                        Container(
+                            top=100,
+                            alignment=alignment.center,
+                            content=TextField(label="Amount", border="underline", filled=True, hint_text="Enter amount"),
+                        ),
+                        Container(
+                            top=200,
+                            alignment=alignment.center,
+                            content=TextField(label="Fee", border="underline", filled=True, hint_text="Enter amount"),
+                        ),
+                        ElevatedButton("Save", width=125, height=50, top=300),
                         ElevatedButton("Go Back", width=125, height=50, top=600, on_click=go_back),
                     ],
                 ),
-                alignment=alignment.center,
-                height=750,
+            width=700,
             ),
         )
 
@@ -40,24 +49,32 @@ def main(page: Page):
         # Create a new container with the content for the 'Cash In' page
         new_container = Container(
             width='90vw',
-            height=750,
-            bgcolor=FWG,  # Use FWG instead of FG
+            bgcolor=BG,
             border_radius=35,
             alignment=alignment.center,
             content=Container(
                 Stack(
-                    width='90vw',
                     height=750,
                     controls=[
-
                         Text("Cash Out", size=40, color='white', weight=FontWeight.BOLD),
+                        Container(
+                            top=100,
+                            alignment=alignment.center,
+                            content=TextField(label="Amount", border="underline", filled=True, hint_text="Enter amount"),
+                        ),
+                        Container(
+                            top=200,
+                            alignment=alignment.center,
+                            content=TextField(label="Fee", border="underline", filled=True, hint_text="Enter amount"),
+                        ),
+                        ElevatedButton("Save", width=125, height=50, top=300),
                         ElevatedButton("Go Back", width=125, height=50, top=600, on_click=go_back),
                     ],
                 ),
-                alignment=alignment.center,
-                height=750,
+            width=700,
             ),
         )
+
 
         # Append the new container to the existing views
         page.views.append(new_container)
@@ -71,10 +88,6 @@ def main(page: Page):
         page.views.pop()
         page.update()
 
-    BG = '#041955'
-    FWG = '#97b4ff'
-    FG = '#3450a1'
-
     buttons = Column(
         controls=[
             ElevatedButton(text='Cash In', width=125, height=50, on_click=go_cashIn),
@@ -87,7 +100,7 @@ def main(page: Page):
     # Initially, create a container with a placeholder content
     container = Container(
         width='90vw',
-        height=750,
+        height=700,
         bgcolor=BG,
         border_radius=35,
         alignment=alignment.center,
