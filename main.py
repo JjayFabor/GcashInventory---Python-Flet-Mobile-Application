@@ -8,6 +8,32 @@ def main(page: Page):
     def go_cashIn(e):
         page.route = '/cashIn'
 
+        # Create a new container with the content for the 'Cash In' page
+        new_container = Container(
+            width='90vw',
+            height=750,
+            bgcolor=FWG,  # Use FWG instead of FG
+            border_radius=35,
+            alignment=alignment.center,
+            content=Container(
+                Stack(
+                    width='90vw',
+                    height=750,
+                    controls=[
+
+                        Text("Cash In", size=40, color='white', weight=FontWeight.BOLD),
+                        ElevatedButton("Go Back", width=125, height=50, top=600, on_click=go_back),
+                    ],
+                ),
+                alignment=alignment.center,
+                height=750,
+            ),
+        )
+
+        # Append the new container to the existing views
+        page.views.append(new_container)
+        page.update()
+
     def go_cashOut(e):
         page.route = '/cashOut'
 
