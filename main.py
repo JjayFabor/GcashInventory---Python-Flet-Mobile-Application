@@ -1,6 +1,4 @@
 from flet import *
-from flet import Container, Stack, Row, Text, ElevatedButton
-
 
 def main(page: Page):
     page.theme_mode = ThemeMode.LIGHT
