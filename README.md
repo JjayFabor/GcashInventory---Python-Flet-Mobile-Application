@@ -1,1 +1,1 @@
-# GcashInventory---Python-Flet-Mobile-Application
+# GcashInventory---Python-Flet-Application
